@@ -6,7 +6,7 @@ NC='\033[0m'
 echo -e "${RED}\nUnwanted process\n"
 echo -e "${GREEN}\n"
 
-cat ./message.txt
+cat /netshoot/bin/message.txt
 
 echo -e "${NC}\n\n"
 exit 0

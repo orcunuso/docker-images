@@ -1,0 +1,23 @@
+FROM registry.access.redhat.com/ubi7/ubi:7.8-255
+LABEL version="20200501" \
+      maintainer="Ozan Orcunus" \
+      github="https://github.com/vOrcunus/docker-images"
+
+ENV POD_TIMEOUT=120
+RUN mkdir /netshoot \
+    && chgrp -R 0 /netshoot \
+    && chmod -R g=u /netshoot
+ADD . /netshoot/
+
+RUN set -ex \
+    && yum makecache fast \
+    && yum install -y --setopt=tsflags=nodocs --nogpgcheck \
+         vi git wget nmap nc iputils bind-utils openldap-clients net-tools bzip2 psmisc \
+    && yum clean all \
+    && rm -rf /var/cache/yum/*
+
+WORKDIR /netshoot
+USER 10001
+CMD ["sh","./bin/run.sh"]
+
+# docker build -t docker.io/orcunuso/netshoot:ubi7-20200501 -f Dockerfile-ubi7 .

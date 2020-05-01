@@ -1,0 +1,22 @@
+FROM registry.access.redhat.com/ubi7/ubi-minimal:7.8-237
+LABEL version="20200501" \
+      maintainer="Ozan Orcunus" \
+      github="https://github.com/vOrcunus/docker-images"
+
+ENV POD_TIMEOUT=120
+RUN mkdir /netshoot \
+    && chgrp -R 0 /netshoot \
+    && chmod -R g=u /netshoot
+ADD . /netshoot/
+
+RUN set -ex \
+    && microdnf --nodocs install -y \
+         vi git wget nmap nc iputils bind-utils openldap-clients net-tools bzip2 psmisc \
+    && microdnf clean all \
+    && rm -rf /var/cache/yum/*
+
+WORKDIR /netshoot
+USER 10001
+CMD ["sh","./bin/run.sh"]
+
+# docker build -t docker.io/orcunuso/netshoot:ubi7m-20200501 -f Dockerfile-ubi7m .
