@@ -4,6 +4,7 @@
 *.log
 *.rpm
 *.sh.source
+*.ozan
 
 # Terraform Files
 *.tfstate

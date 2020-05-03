@@ -1,0 +1,10 @@
+. {
+    log
+    errors
+    auto
+    # Reloads configuration every minute
+    reload 60s
+    forward . 1.1.1.1:53
+    # file /etc/coredns/orcunuso.io.db orcunuso.io
+    hosts /etc/coredns/orcunuso.io.hosts orcunuso.io
+}
