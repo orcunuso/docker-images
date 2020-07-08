@@ -1,9 +1,9 @@
-FROM registry.access.redhat.com/ubi7/ubi:7.8-255
-LABEL version="20200501" \
+FROM registry.access.redhat.com/ubi7/ubi:7.8-345
+LABEL version="20200708" \
       maintainer="Ozan Orcunus" \
       github="https://github.com/vOrcunus/docker-images"
 
-ENV POD_TIMEOUT=120
+ENV POD_TIMEOUT=1440
 RUN mkdir /netshoot \
     && chgrp -R 0 /netshoot \
     && chmod -R g=u /netshoot
@@ -20,4 +20,4 @@ WORKDIR /netshoot
 USER 10001
 CMD ["sh","./bin/run.sh"]
 
-# docker build -t docker.io/orcunuso/netshoot:ubi7-20200501 -f Dockerfile-ubi7 .
+# docker build -t docker.io/orcunuso/netshoot:ubi7-20200708 -f Dockerfile-ubi7 .

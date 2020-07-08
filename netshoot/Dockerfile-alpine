@@ -1,9 +1,9 @@
-FROM alpine:3.11.6
-LABEL version="20200501" \
+FROM alpine:3.12.0
+LABEL version="20200708" \
       maintainer="Ozan Orcunus" \
       github="https://github.com/vOrcunus/docker-images"
 
-ENV POD_TIMEOUT=120
+ENV POD_TIMEOUT=1440
 RUN set -ex \
     && echo "http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories \
     && apk update \
@@ -40,4 +40,4 @@ WORKDIR /netshoot
 USER 10001
 CMD ["sh","./bin/run.sh"]
 
-# docker build -t docker.io/orcunuso/netshoot:alpine-20200501 -f Dockerfile-alpine .
+# docker build -t docker.io/orcunuso/netshoot:alpine-20200708 -f Dockerfile-alpine .
