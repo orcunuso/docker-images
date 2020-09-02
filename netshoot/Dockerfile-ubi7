@@ -3,7 +3,7 @@ LABEL version="20200708" \
       maintainer="Ozan Orcunus" \
       github="https://github.com/vOrcunus/docker-images"
 
-ENV POD_TIMEOUT=1440
+ENV POD_TIMEOUT=1600
 RUN mkdir /netshoot \
     && chgrp -R 0 /netshoot \
     && chmod -R g=u /netshoot
