@@ -1,5 +1,5 @@
-FROM alpine:3.12.0
-LABEL version="20200708" \
+FROM alpine:3.13.5
+LABEL version="20210511" \
       maintainer="Ozan Orcunus" \
       github="https://github.com/vOrcunus/docker-images"
 
@@ -9,6 +9,8 @@ RUN set -ex \
     && apk update \
     && apk add --no-cache \
          tcpdump \
+         openssl \
+         busybox-extras \
          bridge-utils \
          bind-tools \
          netcat-openbsd \
@@ -40,4 +42,4 @@ WORKDIR /netshoot
 USER 10001
 CMD ["sh","./bin/run.sh"]
 
-# docker build -t docker.io/orcunuso/netshoot:alpine-20200708 -f Dockerfile-alpine .
+# docker build -t docker.io/orcunuso/netshoot:alpine-20210511 -f Dockerfile-alpine .
