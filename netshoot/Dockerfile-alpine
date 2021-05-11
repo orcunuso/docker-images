@@ -1,7 +1,7 @@
 FROM alpine:3.13.5
 LABEL version="20210511" \
       maintainer="Ozan Orcunus" \
-      github="https://github.com/vOrcunus/docker-images"
+      github="https://github.com/orcunuso/docker-images"
 
 ENV POD_TIMEOUT=1440
 RUN set -ex \
